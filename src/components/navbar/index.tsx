@@ -113,47 +113,48 @@ const index = (
 
         </div>
 
-        {isMobileMenuOpen && (
 
-          <motion.div
-            className={`md:hidden w-full flex bg-[#212529]`}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
 
-            transition={{ duration: 0.3 }}
+        <motion.div
+          className={`md:hidden w-full flex bg-[#212529]`}
+          animate={{
+            opacity: isMobileMenuOpen ? 1 : 0,
+            height: isMobileMenuOpen ? "auto" : 0,
+            overflow: isMobileMenuOpen ? "visible" : "hidden",
+            
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
 
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a
-
-                href={`#${SelectedPage.AboutUs}`}
-                className={`block px-3 py-2 rounded-md text-base font-medium
+              href={`#${SelectedPage.AboutUs}`}
+              className={`block px-3 py-2 rounded-md text-base font-medium
             ${selectedPageState === SelectedPage.AboutUs ? "text-soleus-green" : "text-gray-500"}`}
-                onClick={(e) => {
-                  setSelectedPageState(SelectedPage.AboutUs)
-                  e.preventDefault();
-                }
-                }
-              >About</a>
+              onClick={(e) => {
+                setSelectedPageState(SelectedPage.AboutUs)
+                e.preventDefault();
+              }
+              }
+            >About</a>
 
-              <a href={`#${SelectedPage.Services}`}
-                className=
-                {`block px-3 py-2 rounded-md text-base font-medium  
+            <a href={`#${SelectedPage.Services}`}
+              className=
+              {`block px-3 py-2 rounded-md text-base font-medium  
             ${selectedPageState === SelectedPage.Services ? "text-soleus-green" : "text-gray-500"}`}
-                onClick={() => setSelectedPageState(SelectedPage.Services)}
-              >Services</a>
+              onClick={() => setSelectedPageState(SelectedPage.Services)}
+            >Services</a>
 
-              <a href={`#${SelectedPage.ContactUs}`} className={
-                `block px-3 py-2 rounded-md text-base font-medium
+            <a href={`#${SelectedPage.ContactUs}`} className={
+              `block px-3 py-2 rounded-md text-base font-medium
             ${selectedPageState === SelectedPage.ContactUs ? "text-soleus-green" : "text-gray-500"}`}
-                onClick={() => setSelectedPageState(SelectedPage.ContactUs)}
-              >Contact</a>
+              onClick={() => setSelectedPageState(SelectedPage.ContactUs)}
+            >Contact</a>
 
-            </div>
+          </div>
 
-          </motion.div>
-        )}
+        </motion.div>
+
 
 
       </div>

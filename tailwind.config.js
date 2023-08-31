@@ -32,6 +32,10 @@ export default {
 
         
       },
+      backgroundImage: theme => ({
+        'hero-pattern': "url('/src/assets/images/hero-pattern.jpg')",
+        'footer-texture': "url('/src/assets/images/footer-texture.png')",
+        })
     },
   },
   plugins: [],
