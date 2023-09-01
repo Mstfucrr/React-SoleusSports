@@ -13,6 +13,7 @@ import img1 from '@/assets/images/img1.jpg'
 import img2 from '@/assets/images/img2.jpg'
 import { SelectedPage } from '../navbar/types';
 import { ChevronForwardSharp } from 'react-ionicons'
+import { motion } from 'framer-motion';
 
 // soleus sport header component
 
@@ -49,21 +50,34 @@ const index = () => {
     <div className="relative w-full overflow-hidden mt-1" id={SelectedPage.header}>
       {/* soleus sport title */}
       <div className='py-28 '>
-        <ChevronForwardSharp
-          color={'#0b9e00'}  
-          height="900px"
-          width="900px"
-          cssClasses="absolute -top-32 -left-[17%] opacity-10"
-        />
-        <ChevronForwardSharp
-          color={'#787878'}  
-          height="900px"
-          width="900px"
-          cssClasses="absolute -top-32 -left-[6%] opacity-10"
-        />
+        <motion.div
+          initial={{ translateX: "-100%", opacity: 0 }}
+          animate={{ translateX: "-%17", opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <ChevronForwardSharp
+            color={'#0b9e00'}
+            height="900px"
+            width="900px"
+            cssClasses="absolute -top-52 -left-[17%] opacity-10"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ translateX: "-100%", opacity: 0 }}
+          animate={{ translateX: "-%6", opacity: 1 }}
+          transition={{ duration: 1.5, delay: .2 }}
+        >
+          <ChevronForwardSharp
+            color={'#787878'}
+            height="900px"
+            width="900px"
+            cssClasses="absolute -top-52 -left-[6%] opacity-10"
+          />
+        </motion.div>
 
 
         <div className='flex flex-col md:items-end items-start justify-center py-28 pr-24  
+        
         '>
           <h1 className="text-5xl font-bold text-soleus-green relative
             before:absolute before:content-['Soleus_Sports_Club'] before:text-soleus-green
