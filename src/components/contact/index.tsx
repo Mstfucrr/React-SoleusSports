@@ -13,8 +13,7 @@ const index = () => {
                 {/* harita */}
                 <a href="https://www.google.com/maps/place/Soleus+Sports+Club/data=!3m1!4b1!4m2!3m1!1s0x14c73f44df79fe5d:0x6202bb959d28a4a6" 
                 target="_blank" data-tracking-element-type="7" className='w-full h-[40rem]'>
-                    <div className="QMbmRe w-full h-[40rem]"
-                    style={{"backgroundImage":"url('https://maps.googleapis.com/maps/api/staticmap?scale=1&size=1600x900&style=feature:poi.business|visibility:off&style=feature:water|visibility:simplified&style=feature:road|element:labels.icon|visibility:off&style=feature:road.highway|element:labels|saturation:-90|lightness:25&format=jpg&language=tr&region=TR&markers=color:0xdb5e5e|37.7497907,29.0588808&zoom=16&client=google-presto&signature=iZCOxEiC6MfJgyfV-mkj6ys0ir0')"}}
+                    <div className="QMbmRe w-full h-[40rem] bg-bottom bg-map"
                     title="İşletmenin bulunduğu konumu gösteren harita.">
                 </div>
                 </a>

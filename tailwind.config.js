@@ -32,9 +32,10 @@ export default {
 
         
       },
-      backgroundImage: theme => ({
+      backgroundImage: () => ({
         'hero-pattern': "url('/src/assets/images/hero-pattern.jpg')",
         'footer-texture': "url('/src/assets/images/footer-texture.png')",
+        'map': "url('https://maps.googleapis.com/maps/api/staticmap?scale=1&size=1600x900&style=feature:poi.business|visibility:off&style=feature:water|visibility:simplified&style=feature:road|element:labels.icon|visibility:off&style=feature:road.highway|element:labels|saturation:-90|lightness:25&format=jpg&language=tr&region=TR&markers=color:0xdb5e5e|37.7497907,29.0588808&zoom=16&client=google-presto&signature=iZCOxEiC6MfJgyfV-mkj6ys0ir0')"
         })
     },
   },
