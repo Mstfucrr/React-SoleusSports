@@ -1,11 +1,19 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import { SelectedPage } from '../navbar/types'
 
 // soleus sport contact component
 
-const index = () => {
+const index = (
+    { setSelectedPageState = () => { } }: { setSelectedPageState?: React.Dispatch<React.SetStateAction<SelectedPage>> }
+) => {
+    
     return (
-        <div className="relative w-full overflow-hidden mt-1" id={SelectedPage.ContactUs}>
+        <motion.div className="relative w-full overflow-hidden mt-1" id={SelectedPage.contactUs}
+            onViewportEnter= {
+                () => setSelectedPageState(SelectedPage.contactUs)
+            }
+        >
             {/* soleus sport contact */}
             <div className="flex flex-col items-center justify-center ">
                 <h1 className="text-5xl font-bold text-gray-300 text-uppercase my-7">Bize Ulaşın</h1>
@@ -28,6 +36,7 @@ const index = () => {
                                 bg-soleus-green text-dark px-8 py-4 rounded-md font-bold
                                 hover:bg-soleus-green-800 hover:text-black hover:scale-110 hover:rotate-3 
                                 transition-all duration-300 ease-in-out mt-2 mb-8
+                                animate-bounce
                                 ">
                             <i className="fas fa-phone-alt"></i> Hemen Ara
                         </a>
@@ -46,6 +55,7 @@ const index = () => {
                                 bg-soleus-green text-dark px-8 py-4 rounded-md font-bold
                                 hover:bg-soleus-green-800 hover:text-black hover:scale-110 hover:rotate-3
                                 transition-all duration-300 ease-in-out mt-2 mb-8
+                                
                                 ">
                             <i className="fas fa-map-marker-alt"></i> Haritada Gör
                         </a>
@@ -68,7 +78,7 @@ const index = () => {
 
             </div>
 
-        </div>
+        </motion.div>
     )
 }
 

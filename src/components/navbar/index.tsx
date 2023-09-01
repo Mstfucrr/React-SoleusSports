@@ -2,23 +2,18 @@
 import { useEffect, useState } from "react";
 
 import { SelectedPage } from "./types";
+import Link from "./Link";
 
 
 import soleusTitleLogo from "@/assets/images/soleusTitleLogo.png";
 import { motion } from "framer-motion";
 
 const index = (
-  { selectedPage }: { selectedPage?: SelectedPage }
+  { selectedPageState, setSelectedPageState }: { selectedPageState: SelectedPage, setSelectedPageState: (page: SelectedPage) => void }
 ) => {
 
-  const [selectedPageState, setSelectedPageState] = useState<SelectedPage>(selectedPage ? selectedPage : SelectedPage.header);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setSelectedPageState(selectedPage ? selectedPage : SelectedPage.header);
-  }, [selectedPage]);
-
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true)
 
   useEffect(() => {
@@ -34,13 +29,15 @@ const index = (
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const links = [
+    { page: "Galeri", setSelectedPageState: setSelectedPageState },
+    { page: "Iletişim", setSelectedPageState: setSelectedPageState },
+
+  ]
 
   return (
-    <>
-      <div className="flex flex-col  md:py-7 py-5 w-full sticky top-0 z-10 bg-[#212529]
-        border-b-[1px] border-gray-700
-      ">
-
+    <div className="sticky flex top-0 z-40 bg-soleus-grey border-b-[1px] border-gray-700">
+      <div className="flex flex-col md:py-7 py-5 w-full">
         <div className="flex justify-between w-full items-center">
 
           <a href={`#${SelectedPage.header}`}
@@ -59,29 +56,14 @@ const index = (
           {/* for pc */}
           <div className="md:block hidden">
 
-            <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <nav className="md:ml-auto flex flex-wrap items-center justify-center text-lg
+              hover:text-gray-300 font-semibold
+            ">
 
-              <a href={`#${SelectedPage.Gallery}`}
-                className={`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400
-                    ${selectedPageState === SelectedPage.Gallery ? "text-soleus-green" : "text-gray-500"}
-                    `}
-                onClick={(e) => {
-                  setSelectedPageState(SelectedPage.Gallery)
-                  e.preventDefault();
-                }
-                }
-              >Galeri </a>
+              {links.map((link, index) => (
+                <Link key={index} {...link} selectedPageState={selectedPageState} />
+              ))}
 
-              <a href={`#${SelectedPage.Services}`} className={`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400 
-                    ${selectedPageState === SelectedPage.Services ? "text-soleus-green" : "text-gray-500"}`}
-                onClick={() => setSelectedPageState(SelectedPage.Services)}
-              >Services</a>
-
-              <a href={`#${SelectedPage.ContactUs}`} className={`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400
-              
-              ${selectedPageState === SelectedPage.ContactUs ? "text-soleus-green" : "text-gray-500"}`}
-                onClick={() => setSelectedPageState(SelectedPage.ContactUs)}
-              >Contact</a>
             </nav>
           </div>
           {/* for mobile */}
@@ -111,57 +93,59 @@ const index = (
 
         </div>
 
-
-
-        <motion.div
-          className={`md:hidden w-full flex bg-[#212529]`}
-          animate={{
-            opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? "auto" : 0,
-            overflow: isMobileMenuOpen ? "visible" : "hidden",
-            
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-
-              href={`#${SelectedPage.Gallery}`}
-              className={`block px-3 py-2 rounded-md text-base font-medium
-            ${selectedPageState === SelectedPage.Gallery ? "text-soleus-green" : "text-gray-500"}`}
-              onClick={(e) => {
-                setSelectedPageState(SelectedPage.Gallery)
-                e.preventDefault();
-              }
-              }
-            >Gallery</a>
-
-            <a href={`#${SelectedPage.Services}`}
-              className=
-              {`block px-3 py-2 rounded-md text-base font-medium  
-            ${selectedPageState === SelectedPage.Services ? "text-soleus-green" : "text-gray-500"}`}
-              onClick={() => setSelectedPageState(SelectedPage.Services)}
-            >Services</a>
-
-            <a href={`#${SelectedPage.ContactUs}`} className={
-              `block px-3 py-2 rounded-md text-base font-medium
-            ${selectedPageState === SelectedPage.ContactUs ? "text-soleus-green" : "text-gray-500"}`}
-              onClick={() => setSelectedPageState(SelectedPage.ContactUs)}
-            >Contact</a>
-
-          </div>
-
-        </motion.div>
-
-
-
       </div>
       {/* for mobile */}
 
+      <motion.div
+        className={`
+          md:hidden flex w-3/5 h-screen fixed right-0 bottom-0 py-16 pl-9 flex-col bg-soleus-grey top-0
+          `}
+        initial={{
+          x: 300,
+          y: -100,
+          scale: 0.5,
+          borderRadius: "100%",
+          originX: 1,
+          originY: 0,
+        }}
+        animate={{
+          x: isMobileMenuOpen ? 0 : 300,
+          y: isMobileMenuOpen ? 0 : -100,
+          scale: isMobileMenuOpen ? 1 : 0.5,
+          borderRadius: isMobileMenuOpen ? "0%" : "100%",
+          originX: isMobileMenuOpen ? 0 : 1,
+          originY: isMobileMenuOpen ? 0 : 0,
+        }}
+        transition={{ duration: .6, type: "spring", bounce: .25 }}
+      >
+        {/* close button */}
+        <button
+          className="flex justify-end m-5 rounded-md text-gray-400"
+          aria-expanded="false"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          {/* Icon when menu is closed. */}
+          <svg className={`${isMobileMenuOpen ? "block" : "hidden"} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+
+        </button>
+
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 w-1/3 flex flex-col gap-6 text-xl">
+          {links.map((link, index) => (
+            <Link key={index} {...link} selectedPageState={selectedPageState} />
+          ))}
+
+
+        </div>
+
+      </motion.div>
 
 
 
-    </>
+    </div>
   )
 }
 

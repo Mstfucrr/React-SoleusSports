@@ -11,13 +11,18 @@ import kapak from '@/assets/images/kapak.png'
 import kapak2 from '@/assets/images/kapak2.jpg'
 import img1 from '@/assets/images/img1.jpg'
 import img2 from '@/assets/images/img2.jpg'
+import hero from '@/assets/images/hero-pattern.jpg'
+
 import { SelectedPage } from '../navbar/types';
 import { ChevronForwardSharp } from 'react-ionicons'
 import { motion } from 'framer-motion';
 
 // soleus sport header component
 
-const index = () => {
+const index = (
+
+  { setSelectedPageState = () => { } }: { setSelectedPageState?: (selectedPageState: SelectedPage) => void }
+) => {
 
   const SwiperItems = [
     {
@@ -37,48 +42,90 @@ const index = () => {
       img: img2,
       title: "Soleus Sports",
       subtitle: "İçindeki gücü keşfet"
-    },
-    {
-      id: 4,
-      img: kapak2,
     }
-
   ]
 
   return (
 
-    <div className="relative w-full overflow-hidden mt-1" id={SelectedPage.header}>
+    <motion.div className="relative w-full overflow-hidden mt-1" id={SelectedPage.header}
+      onViewportEnter={() => setSelectedPageState(SelectedPage.header)}
+
+    >
       {/* soleus sport title */}
-      <div className='py-28 '>
-        <motion.div
-          initial={{ translateX: "-100%", opacity: 0 }}
-          animate={{ translateX: "-%17", opacity: 1 }}
-          transition={{ duration: 1.5 }}
+      <motion.div
+          variants={{
+
+            visible: {
+              opacity: 1,
+              transform: [
+                "translateX(0%) rotateY(0deg)",
+                "translateX(70%) rotateY(90deg)",
+                "translateX(-10%) rotateY(180deg)"
+              ],
+              transition: { duration: 2 },
+            },
+            hidden: {
+              opacity: .1,
+            },
+
+          }}
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true, amount: 0.5 }}
         >
           <ChevronForwardSharp
             color={'#0b9e00'}
             height="900px"
             width="900px"
-            cssClasses="absolute -top-52 -left-[17%] opacity-10"
+            cssClasses="absolute md:-top-52 top-20 opacity-10"
           />
         </motion.div>
         <motion.div
-          initial={{ translateX: "-100%", opacity: 0 }}
-          animate={{ translateX: "-%6", opacity: 1 }}
-          transition={{ duration: 1.5, delay: .2 }}
+          variants={{
+            visible: {
+              opacity: 1,
+              transform: [
+                "translateX(0%) rotateY(0deg)",
+                "translateX(70%) rotateY(90deg)",
+                "translateX(2%) rotateY(180deg)"
+              ],
+              transition: { duration: 2, delay: .2 },
+            },
+            hidden: {
+              opacity: .1,
+            },
+
+          }}
+          initial="hidden"
+          animate="visible"
+          viewport={{ once: true, amount:.5 }}
+
+
         >
           <ChevronForwardSharp
             color={'#787878'}
             height="900px"
             width="900px"
-            cssClasses="absolute -top-52 -left-[6%] opacity-10"
+            cssClasses="absolute md:-top-52 top-20 opacity-10"
           />
         </motion.div>
-
-
-        <div className='flex flex-col md:items-end items-start justify-center py-28 pr-24  
+      <div className='pt-24 pb-16 flex w-full justify-between items-center lg:flex-row flex-col'>
         
-        '>
+        <motion.img
+          src={hero}
+          className="md:w-64 sm:w-72 w-full object-scale-down rounded-xl z-[0] relative left-0"
+          style={{ zoom : 1.3 }}
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: .7, delay: .3 }}
+        />
+
+        <motion.div className='flex flex-col md:items-end items-start justify-center py-28 pr-24 z-10'
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: .7, delay: 1.2 }}
+          
+        >
           <h1 className="text-5xl font-bold text-soleus-green relative
             before:absolute before:content-['Soleus_Sports_Club'] before:text-soleus-green
             before:-top-14 before:md:-left-56 before:-left-1 md:whitespace-nowrap before:z-[-1] before:opacity-10 before:text-7xl 
@@ -93,7 +140,7 @@ const index = () => {
         ">
             <i className="fas fa-phone-alt"></i> Hemen Ara
           </a>
-        </div>
+        </motion.div>
         {/* soleus sport header swiper */}
       </div>
 
@@ -154,7 +201,7 @@ const index = () => {
 
 
       </Swiper>
-    </div>
+    </motion.div>
   )
 }
 

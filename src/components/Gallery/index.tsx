@@ -66,41 +66,50 @@ const galleryItem = [
 ]
 
 
-const Gallery = () => {
+const Gallery = (
+    {setSelectedPageState = () => { }}: { setSelectedPageState?: React.Dispatch<React.SetStateAction<SelectedPage>> }
+) => {
     return (
-        <div className='flex flex-col items-center justify-center w-full h-full py-20'
-            id={SelectedPage.Gallery}
+        <motion.section
+            id={SelectedPage.gallery} className="mt-10"
+            onViewportEnter={() => setSelectedPageState(SelectedPage.gallery)} 
         >
-            <div className='flex flex-col items-center justify-center w-full h-full'>
-                <h1 className='text-4xl font-bold text-center text-soleus-green-900 my-5'>Galeri</h1>
-                <p className='text-lg text-center text-soleus-green-900'>
 
-                </p>
-            </div>
-            <div className='flex flex-wrap items-center justify-center w-full h-full gap-5'>
-                {galleryItem.map((item) => (
+            <div className='flex flex-col items-center justify-center w-full h-full py-20'
 
-                    <motion.div key={item.id} className='flex flex-col items-center justify-center w-full h-auto sm:w-[400px] sm:h-[400px]'
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: .5, delay: .1*item.id }}
-                        variants={{
-                            hidden: { opacity: 0, transform: 'scale(0)' },
-                            visible: { opacity: 1, transform: 'scale(1)' }
-                        }}
-                    >
-                        <img src={item.image} alt={item.alt} className='object-cover w-full h-full
-                            hover:scale-105
+            >
+                <div className='flex flex-col items-center justify-center w-full h-full'>
+                    <h1 className='text-4xl font-bold text-center text-soleus-green-900 my-5'>Galeri</h1>
+                    <p className='text-lg text-center text-soleus-green-900'>
+
+                    </p>
+                </div>
+                <div className='flex flex-wrap items-center justify-center w-full h-full gap-5'>
+                    {galleryItem.map((item) => (
+
+                        <motion.div key={item.id} className='flex flex-col items-center justify-center w-full h-auto sm:w-[400px] sm:h-[400px]'
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: .5 }}
+                            variants={{
+                                hidden: { opacity: 0, transform: 'scale(0)' },
+                                visible: { opacity: 1, transform: 'scale(1)' }
+                            }}
+                        >
+                            <img src={item.image} alt={item.alt} className='object-cover w-full h-full
+                            
                         '
 
-                        />
-                    </motion.div>
-                ))}
+                            />
+                        </motion.div>
+                    ))}
+
+                </div>
 
             </div>
+        </motion.section>
 
-        </div>
     )
 }
 
