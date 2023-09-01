@@ -2,6 +2,7 @@
 import facebookLogo from "@/assets/images/footer/facebook.png";
 import instagramLogo from "@/assets/images/footer/instagram.png";
 import twitterLogo from "@/assets/images/footer/twitter.png";
+import soleusLogo from "@/assets/images/soleusTitleLogo.png"
 
 
 const index = () => {
@@ -10,7 +11,7 @@ const index = () => {
             <div className="container px-5 py-8 mx-auto flex items-center justify-between sm:flex-row flex-col">
                 <div>
                     <a href="#home" className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                        <img src="/images/soleusTitleLogo.png" alt="Soleus Logo" className="w-32" />
+                        <img src={soleusLogo} alt="Soleus Logo" className="w-32" />
                     </a>
                 </div>
 
