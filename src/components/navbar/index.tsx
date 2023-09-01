@@ -61,20 +61,18 @@ const index = (
 
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
-              <a href={`#${SelectedPage.AboutUs}`}
+              <a href={`#${SelectedPage.Gallery}`}
                 className={`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400
-                    ${selectedPageState === SelectedPage.AboutUs ? "text-soleus-green" : "text-gray-500"}
+                    ${selectedPageState === SelectedPage.Gallery ? "text-soleus-green" : "text-gray-500"}
                     `}
                 onClick={(e) => {
-                  setSelectedPageState(SelectedPage.AboutUs)
+                  setSelectedPageState(SelectedPage.Gallery)
                   e.preventDefault();
                 }
                 }
-              >About</a>
+              >Galeri </a>
 
-              <a href={`#${SelectedPage.Services}`}
-                className=
-                {`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400 
+              <a href={`#${SelectedPage.Services}`} className={`mr-5 transition-all duration-200 ease-in-out hover:text-gray-400 
                     ${selectedPageState === SelectedPage.Services ? "text-soleus-green" : "text-gray-500"}`}
                 onClick={() => setSelectedPageState(SelectedPage.Services)}
               >Services</a>
@@ -128,15 +126,15 @@ const index = (
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
 
-              href={`#${SelectedPage.AboutUs}`}
+              href={`#${SelectedPage.Gallery}`}
               className={`block px-3 py-2 rounded-md text-base font-medium
-            ${selectedPageState === SelectedPage.AboutUs ? "text-soleus-green" : "text-gray-500"}`}
+            ${selectedPageState === SelectedPage.Gallery ? "text-soleus-green" : "text-gray-500"}`}
               onClick={(e) => {
-                setSelectedPageState(SelectedPage.AboutUs)
+                setSelectedPageState(SelectedPage.Gallery)
                 e.preventDefault();
               }
               }
-            >About</a>
+            >Gallery</a>
 
             <a href={`#${SelectedPage.Services}`}
               className=
