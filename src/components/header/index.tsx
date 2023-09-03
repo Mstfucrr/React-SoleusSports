@@ -76,8 +76,8 @@ const index = (
           <ChevronForwardSharp
             color={'#0b9e00'}
             height="900px"
-            width="900px"
-            cssClasses="absolute md:-top-52 top-20 opacity-10"
+            width="90%"
+            cssClasses="absolute md:-top-52 top-20 opacity-10 w-full"
           />
         </motion.div>
         <motion.div
@@ -105,7 +105,7 @@ const index = (
           <ChevronForwardSharp
             color={'#787878'}
             height="900px"
-            width="900px"
+            width="90%"
             cssClasses="absolute md:-top-52 top-20 opacity-10"
           />
         </motion.div>

@@ -36,7 +36,7 @@ const index = (
   ]
 
   return (
-    <div className="sticky flex top-0 z-40 bg-soleus-grey border-b-[1px] border-gray-700">
+    <div className="sticky flex -mx-4 px-3 top-0 z-40 bg-soleus-grey border-b-[1px] border-gray-700">
       <div className="flex flex-col md:py-7 py-5 w-full">
         <div className="flex justify-between w-full items-center">
 
@@ -98,7 +98,7 @@ const index = (
 
       <motion.div
         className={`
-          md:hidden flex w-3/5 h-screen fixed right-0 bottom-0 py-16 pl-9 flex-col bg-soleus-grey top-0
+          md:hidden flex w-3/5 h-screen fixed right-0 bottom-0 py-16 pl-9 flex-col bg-soleus-dark-grey top-0
           `}
         initial={{
           x: 300,

@@ -28,7 +28,8 @@ export default {
         'soleus-green-100' : '#FEFEFE',
         'soleus-green' : '#9BCA40',
         'soleus-dark-green' : '#6B7280',
-        'soleus-grey' : "#202720"
+        'soleus-grey' : "#202520",
+        'soleus-dark-grey': "#223024",
 
 
         
