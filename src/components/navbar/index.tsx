@@ -36,8 +36,8 @@ const index = (
   ]
 
   return (
-    <div className="sticky flex -mx-4 px-3 top-0 z-40 bg-soleus-grey border-b-[1px] border-gray-700">
-      <div className="flex flex-col md:py-7 py-5 w-full">
+    <div className="sticky flex px-3 top-0 z-40 bg-soleus-grey border-b-[1px] border-gray-700">
+      <div className="flex flex-col md:py-7 py-5 w-5/6 mx-auto">
         <div className="flex justify-between w-full items-center">
 
           <a href={`#${SelectedPage.header}`}

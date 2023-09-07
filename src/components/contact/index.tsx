@@ -9,13 +9,13 @@ const index = (
 ) => {
     
     return (
-        <motion.div className="relative w-full overflow-hidden mt-1" id={SelectedPage.contactUs}
+        <motion.div className="relative w-full overflow-hidden mt-1 bg-soleus-dark-grey" id={SelectedPage.contactUs}
             onViewportEnter= {
                 () => setSelectedPageState(SelectedPage.contactUs)
             }
         >
             {/* soleus sport contact */}
-            <div className="flex flex-col items-center justify-center ">
+            <div className="flex flex-col items-center justify-center w-5/6 mx-auto ">
                 <h1 className="text-5xl font-bold text-gray-300 text-uppercase my-7">Bize Ulaşın</h1>
 
                 {/* harita */}

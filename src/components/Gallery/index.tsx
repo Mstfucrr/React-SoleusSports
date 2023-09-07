@@ -109,86 +109,89 @@ const Gallery = (
 
     return (
         <motion.section
-            id={SelectedPage.gallery} className="mt-10"
+            id={SelectedPage.gallery} className="mt-10 w-full"
             onViewportEnter={() => setSelectedPageState(SelectedPage.gallery)}
         >
+            <div className="w-11/12 mx-auto">
 
-            <div className='py-20'>
-                <h1 className='text-4xl font-bold text-center text-soleus-green-900 mt-2 mb-10'>Galeri</h1>
+                <div className='py-20'>
+                    <h1 className='text-4xl font-bold text-center text-soleus-green-900 mt-2 mb-10'>Galeri</h1>
 
-                <div className='flex flex-row flex-wrap justify-center w-full h-full gap-10 md:gap-14 md:px-12 '>
-                    {galleryItem.map((item) => (
+                    <div className='flex flex-row flex-wrap justify-center w-full h-full gap-10 md:gap-14 md:px-12 '>
+                        {galleryItem.map((item) => (
 
-                        <motion.div
-                            key={item.id} className={`
+                            <motion.div
+                                key={item.id} className={`
                             lg:w-1/4 sm:w-5/12 w-full
                             before:content-[''] before:absolute before:inset-0 before:bg-soleus-green-900 before:z-[-1] before:rounded-xl
                             before:transform before:scale-105 before:opacity-50
                             before:transition before:duration-300 sm:before:hover:rotate-[-5deg]
                             sm:hover:!scale-105 transition duration-300 `}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.5 }}
-                            transition={{ duration: .5 }}
-                            variants={{
-                                hidden: { opacity: 0, transform: 'scale(0)' },
-                                visible: { opacity: 1, transform: 'scale(1)' }
-                            }}
-                            onClick={
-                                openModal(item)}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.5 }}
+                                transition={{ duration: .5 }}
+                                variants={{
+                                    hidden: { opacity: 0, transform: 'scale(0)' },
+                                    visible: { opacity: 1, transform: 'scale(1)' }
+                                }}
+                                onClick={
+                                    openModal(item)}
 
-                        >
-                            <img src={item.image} alt={item.alt} className='object-cover w-full h-full
+                            >
+                                <img src={item.image} alt={item.alt} className='object-cover w-full h-full
                             transition duration-300
                         '
 
-                            />
-                        </motion.div>
-                    ))}
+                                />
+                            </motion.div>
+                        ))}
+
+                    </div>
 
                 </div>
-
-            </div>
-            <AnimatePresence>
-                {selectedModel && (
-                    <motion.div
-                        className="fixed top-3 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, transition: { duration: .15 } }}
-                    >
-                        <motion.img
-                            key={selectedModel.id}
-                            src={selectedModel.image}
-                            alt={selectedModel.alt}
-                            className="max-w-full max-h-full"
-                            ref={galleryItemBox}
-                            initial={{ scale: 0, opacity: 0, x: clickPosition.x, y: clickPosition.y,
-                                transformOrigin: 'center', translateX: '-100%', translateY: '-50%'
-                            }}
-                            animate={{
-                                scale: 1,
-                                opacity: 1,
-                                x: 0,
-                                y: 0,
-                                transformOrigin: 'center',
-                                translateX: '0%',
-                                translateY: '0%',
-                                transition: { duration: 0.6 },
-                            }}
-                            exit={{ scale: 0, opacity: 0, x: 0, y: 0 }}
-                            transition={{ duration: .6 }}
-
-                        />
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 text-white text-2xl font-bold cursor-pointer"
+                <AnimatePresence>
+                    {selectedModel && (
+                        <motion.div
+                            className="fixed top-3 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0, transition: { duration: .15 } }}
                         >
-                            X
-                        </button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                            <motion.img
+                                key={selectedModel.id}
+                                src={selectedModel.image}
+                                alt={selectedModel.alt}
+                                className="max-w-full max-h-full"
+                                ref={galleryItemBox}
+                                initial={{
+                                    scale: 0, opacity: 0, x: clickPosition.x, y: clickPosition.y,
+                                    transformOrigin: 'center', translateX: '-100%', translateY: '-50%'
+                                }}
+                                animate={{
+                                    scale: 1,
+                                    opacity: 1,
+                                    x: 0,
+                                    y: 0,
+                                    transformOrigin: 'center',
+                                    translateX: '0%',
+                                    translateY: '0%',
+                                    transition: { duration: 0.6 },
+                                }}
+                                exit={{ scale: 0, opacity: 0, x: 0, y: 0 }}
+                                transition={{ duration: .6 }}
+
+                            />
+                            <button
+                                onClick={closeModal}
+                                className="absolute top-2 right-2 text-white text-2xl font-bold cursor-pointer"
+                            >
+                                X
+                            </button>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
 
         </motion.section>
 
