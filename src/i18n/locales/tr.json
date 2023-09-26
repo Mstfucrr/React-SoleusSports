@@ -1,0 +1,44 @@
+{
+    "Navbar": {
+        "Gallery": "Galeri",
+        "Contact": "İletişim",
+        "ChangeLanguage": "Dil Değiştir"
+    },
+    "Title": "Soleus Sports Club",
+    "description": "Spor Salonu",
+    "SwipperItems": [
+        {
+            "id": 1,
+            "Title": "Soleus Sports Club",
+            "subtitle": "İçindeki gücü keşfet",
+            "Image": "/src/assets/images/kapak.png"
+        },
+        {
+            "id": 2,
+            "Title": "Soleus Sports Club",
+            "subtitle": "Senin spor ihtiyaçlarını karşılayan tek adres",
+            "Image": "/src/assets/images/img1.jpg"
+        },
+        {
+            "id": 3,
+            "Title": "Soleus Sports Club",
+            "subtitle": "Asla vazgeçme, hayallerine ulaşmak için çalışmaya devam et",
+            "Image": "/src/assets/images/img2.jpg"
+        }
+    ],
+    "Address": {
+        "AddressTitle": "Adres Bilgileri",
+        "ContactTitle": "İletişim Bilgileri",
+        "description": "Servergazi Mahallesi, Mustafa Kemal Aykurt Caddesi No:19, 20040 Denizli",
+        "AddressButton": "Haritada Görüntüle",
+        "Phone1": "0534 087 54 52",
+        "Phone2": "0532 067 66 20",
+        "PhoneButton": "Hemen Arayın"
+    },
+    "Gallery": {
+        "Title": "Galeri"
+    },
+    "Contact": {
+        "Title": "Bize Ulaşın"
+    }
+}

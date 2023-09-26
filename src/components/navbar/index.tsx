@@ -3,14 +3,26 @@ import { useEffect, useState } from "react";
 
 import { SelectedPage } from "./types";
 import Link from "./Link";
-
+import trFlag from "@/assets/icons/turkey-flag-icon.svg";
+import enFlag from "@/assets/icons/united.svg";
 
 import soleusTitleLogo from "@/assets/images/soleusTitleLogo.png";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const index = (
   { selectedPageState, setSelectedPageState }: { selectedPageState: SelectedPage, setSelectedPageState: (page: SelectedPage) => void }
 ) => {
+
+
+  const { t, i18n } = useTranslation();
+  const targetLanguage = i18n.language === 'tr' ? 'en' : 'tr';
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem('language', lng);
+  };
+
 
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,9 +42,8 @@ const index = (
   }, [])
 
   const links = [
-    { page: "Galeri", setSelectedPageState: setSelectedPageState },
-    { page: "Iletişim", setSelectedPageState: setSelectedPageState },
-
+    { page: t("Navbar.Gallery"), setSelectedPageState: setSelectedPageState, name: "Galeri" },
+    { page: t("Navbar.Contact"), setSelectedPageState: setSelectedPageState, name: "Iletisim" },
   ]
 
   return (
@@ -63,6 +74,15 @@ const index = (
               {links.map((link, index) => (
                 <Link key={index} {...link} selectedPageState={selectedPageState} />
               ))}
+
+              <button
+                onClick={() => {
+                  changeLanguage(targetLanguage)
+                }}
+                className="flex items-center justify-center">
+                <img src={targetLanguage === 'tr' ? trFlag : enFlag} alt="Language Flag" className="w-6 h-6" />
+              </button>
+
 
             </nav>
           </div>
@@ -137,7 +157,13 @@ const index = (
           {links.map((link, index) => (
             <Link key={index} {...link} selectedPageState={selectedPageState} />
           ))}
-
+          <button
+            onClick={() => {
+              changeLanguage(targetLanguage)
+            }}
+            className="flex items-center justify-center">
+            <img src={targetLanguage === 'tr' ? trFlag : enFlag} alt="Language Flag" className="w-6 h-6" />
+          </button>
 
         </div>
 

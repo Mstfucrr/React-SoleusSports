@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SelectedPage } from '../navbar/types'
 import { useEffect, useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts';
+import { useTranslation } from 'react-i18next'
 
 interface galleryItemModel {
     id: number,
@@ -85,6 +86,8 @@ const Gallery = (
         setClickPosition({ x: e.clientX, y: e.clientY })
 
     };
+    const { t } = useTranslation();
+
 
     useEffect(() => {
         if (selectedModel) {
@@ -115,7 +118,9 @@ const Gallery = (
             <div className="w-11/12 mx-auto">
 
                 <div className='py-20'>
-                    <h1 className='text-4xl font-bold text-center text-soleus-green-900 mt-2 mb-10'>Galeri</h1>
+                    <h1 className='text-4xl font-bold text-center text-soleus-green-900 mt-2 mb-10'>
+                        {t("Gallery.Title")}
+                    </h1>
 
                     <div className='flex flex-row flex-wrap justify-center w-full h-full gap-10 md:gap-14 md:px-12 '>
                         {galleryItem.map((item) => (

@@ -1,10 +1,12 @@
-import Home from './pages/Home'
+import Home from '@/pages/home'
+import LanguageProvider from './LanguageProvider';
 
 function App() {
-
   return (
     <div className="app">
-      <Home />
+      <LanguageProvider>
+        <Home />
+      </LanguageProvider>
     </div>
 
   )

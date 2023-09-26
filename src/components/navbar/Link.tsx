@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { SelectedPage } from "./types"
 
@@ -6,12 +5,13 @@ type Props = {
     page: string
     selectedPageState: SelectedPage
     setSelectedPageState: (page: SelectedPage) => void
+    name : string
 }
 
 const Link = (
-    { page, selectedPageState, setSelectedPageState }: Props) => {
+    { page, selectedPageState, setSelectedPageState , name }: Props) => {
 
-    const link = page.toLowerCase().replace(" ", "-").replace("ı", "i").replace("ç", "c").replace("ş", "s").replace("ğ", "g").replace("ü", "u").replace("ö", "o") as SelectedPage
+    const link = name.toLowerCase().replace(" ", "-").replace("ı", "i").replace("ç", "c").replace("ş", "s").replace("ğ", "g").replace("ü", "u").replace("ö", "o") as SelectedPage
 
 
     return (

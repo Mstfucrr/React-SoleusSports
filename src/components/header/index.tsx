@@ -1,8 +1,9 @@
 import hero from '@/assets/images/hero-pattern.jpg'
 import { SelectedPage } from '../navbar/types';
-import { ChevronForwardSharp } from 'react-ionicons'
+import { CallSharp, ChevronForwardSharp } from 'react-ionicons'
 import { motion } from 'framer-motion';
 import SwiperComponent from './Swiper';
+import { useTranslation } from 'react-i18next';
 
 // soleus sport header component
 
@@ -11,6 +12,7 @@ const index = (
   { setSelectedPageState = () => { } }: { setSelectedPageState?: (selectedPageState: SelectedPage) => void }
 ) => {
 
+  const { t } = useTranslation();
 
 
   return (
@@ -69,7 +71,6 @@ const index = (
           animate="visible"
           viewport={{ once: true, amount: .5 }}
 
-
         >
           <ChevronForwardSharp
             color={'#787878'}
@@ -99,15 +100,20 @@ const index = (
             before:absolute before:content-['Soleus_Sports_Club'] before:text-soleus-green
             before:-top-14 before:md:-left-56 before:-left-1 md:whitespace-nowrap before:z-[-1] before:opacity-10 before:text-7xl 
             z-[2]
-          ">Soleus Sports Club</h1>
-            <h4 className="text-lg font-bold text-soleus-dark-green leading-10">Spor Salonu</h4>
-            <h3 className="text-xl font-bold text-soleus-dark-green mb-5">Servergazi Mahallesi, Mustafa Kemal Aykurt Caddesi No:19, Denizli</h3>
+          ">
+              {t("Title")}
+
+            </h1>
+            <h4 className="text-lg font-bold text-soleus-dark-green leading-10">{t("description")}</h4>
+            <h3 className="text-xl font-bold text-soleus-dark-green mb-5">
+              {t("Address.description")}
+            </h3>
             <a target="_blang" href='tel:+90-534-087-54-52' className="
           bg-soleus-green text-dark px-5 py-2 rounded-md font-bold
           hover:bg-soleus-green-800 hover:text-black hover:scale-110 hover:rotate-3 
           transition-all duration-300 ease-in-out mt-2 mb-8
         ">
-              <i className="fas fa-phone-alt"></i> Hemen Ara
+              <CallSharp cssClasses={"inline mr-3"} /> {t("Address.PhoneButton")} 
             </a>
           </motion.div>
           {/* soleus sport header swiper */}

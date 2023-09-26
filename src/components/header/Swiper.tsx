@@ -1,35 +1,16 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import kapak from '@/assets/images/kapak.png'
-import img1 from '@/assets/images/img1.jpg'
-import img2 from '@/assets/images/img2.jpg'
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useTranslation } from 'react-i18next';
 
 const SwiperComponent = () => {
 
-    const SwiperItems = [
-        {
-            id: 1,
-            img: kapak,
-            title: "Soleus Sports",
-            subtitle: "Senin spor ihtiyaçlarını karşılayan tek adres"
-        },
-        {
-            id: 2,
-            img: img1,
-            title: "Soleus Sports",
-            subtitle: "Asla vazgeçme, hayallerine ulaşmak için çalışmaya devam et"
-        },
-        {
-            id: 3,
-            img: img2,
-            title: "Soleus Sports",
-            subtitle: "İçindeki gücü keşfet"
-        }
-    ]
+    const { t } = useTranslation();
 
+    const items = t("SwipperItems", { returnObjects: true })
 
     return (
         <>
@@ -48,19 +29,17 @@ const SwiperComponent = () => {
                 modules={[Navigation, Pagination]}
                 className="w-full">
 
-                {SwiperItems.map((item) => (
+                {items.map((item : any) => (
                     <SwiperSlide key={item.id} className="h-[550px]">
-                        <img src={item.img} alt="" className="w-full h-full object-cover" />
+                        <img src={item.Image} alt="" className="w-full h-full object-cover" />
                         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-5"></div>
                         <div className="absolute top-1/3 left-0 w-full h-full flex flex-col justify-center items-center
-                bg-gray-900 bg-opacity-5
-              ">
-                            {item.title && (
+                        bg-gray-900 bg-opacity-5 ">
+                            {item.Title && (
                                 <>
-                                    <h1 className="text-5xl font-bold text-soleus-green-600 bg-black w-full text-center leading-relaxed bg-opacity-50">{item.title}</h1>
-                                    <h2 className="text-2xl font-bold bg-black w-full text-center py-1.5 bg-opacity-50
-                  text-soleus-green-700 
-                  ">{item.subtitle}</h2>
+                                    <h1 className="sm:text-5xl text-3xl font-bold text-soleus-green-600 bg-black w-full text-center leading-relaxed bg-opacity-50">{item.Title}</h1>
+                                    <h2 className="sm:text-2xl text-lg font-bold bg-black w-full text-center py-1.5 bg-opacity-50 text-soleus-green-700 ">
+                                        {item.subtitle}</h2>
                                 </>
                             )}
                         </div>
