@@ -11,19 +11,19 @@
             "id": 1,
             "Title": "Soleus Sports Club",
             "subtitle": "Discover the power within you",
-            "Image": "/src/assets/images/kapak.png"
+            "Image": "/k1.png"
         },
         {
             "id": 2,
             "Title": "Soleus Sports Club",
             "subtitle": "The only address that meets your sports needs",
-            "Image": "/src/assets/images/img1.jpg"
+            "Image": "/k2.jpg"
         },
         {
             "id": 3,
             "Title": "Soleus Sports Club",
             "subtitle": "Never give up, keep working to achieve your dreams",
-            "Image": "/src/assets/images/img2.jpg"
+            "Image": "k3.jpg"
         }
     ],
     "Address": {
