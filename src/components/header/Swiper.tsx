@@ -5,12 +5,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useTranslation } from 'react-i18next';
+import { Iitem } from './type';
+
+
 
 const SwiperComponent = () => {
 
     const { t } = useTranslation();
 
-    const items = t("SwipperItems", { returnObjects: true })
+    const items = t("SwipperItems", { returnObjects: true }) as Iitem[]
 
     return (
         <>
@@ -26,10 +29,10 @@ const SwiperComponent = () => {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 }}
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay]}
                 className="w-full">
 
-                {items.map((item : any) => (
+                {items.map((item: Iitem) => (
                     <SwiperSlide key={item.id} className="h-[550px]">
                         <img src={item.Image} alt="" className="w-full h-full object-cover" />
                         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-5"></div>
